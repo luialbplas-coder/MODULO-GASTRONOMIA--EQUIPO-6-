@@ -2,6 +2,7 @@
 declare(strict_types=1);
 require_once __DIR__ . '/includes/bootstrap.php';
 $u=exigir_sesion();
+if(($u['rol']??'')!=='aspirante'){http_response_code(403);exit('Solo las cuentas aspirante pueden valorar.');}
 if($_SERVER['REQUEST_METHOD']!=='POST'){http_response_code(405);exit('Método no permitido.');}
 check_csrf();$id=filter_input(INPUT_POST,'proyecto_id',FILTER_VALIDATE_INT)?:0;$score=filter_input(INPUT_POST,'puntuacion',FILTER_VALIDATE_INT)?:0;
 if($score<1||$score>5){aviso('error','Selecciona una puntuación del 1 al 5.');header('Location: proyecto.php?id='.$id);exit;}
