@@ -256,3 +256,8 @@ boton.addEventListener("click", () => {
 - No suban contraseñas, tokens, archivos privados ni carpetas pesadas como `node_modules`.
 - Si usan imágenes, nombren los archivos con claridad y respeten sus permisos de uso.
 - Mantengan este README actualizado si cambia la forma de trabajar.
+
+
+## Proyecto del equipo A-6
+
+El módulo asignado es **PRO · Portafolio de proyectos** para el Explorador Vocacional UTBB. La carrera de Gastronomía aporta contenido, pero la galería puede incluir proyectos de todas las carreras. El código del módulo está en [modulos/portafolio](modulos/portafolio/README.md). Sigue sus pasos de instalación; el núcleo de la plataforma aún debe integrarse desde el repositorio oficial compartido.
