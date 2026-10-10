@@ -82,3 +82,19 @@ CREATE TABLE IF NOT EXISTS pro_valoraciones (
 
 INSERT IGNORE INTO pro_categorias (nombre) VALUES
 ('Proyecto integrador'), ('Receta y producto'), ('Emprendimiento'), ('Investigacion'), ('Practica profesional');
+
+-- Datos de demostracion iniciales. El proyecto se inserta solo si existe la carrera Gastronomia.
+INSERT INTO pro_convocatorias (titulo, descripcion, fecha_inicio, fecha_cierre, estado)
+SELECT 'Convocatoria de muestra 2026', 'Registro de demostracion para probar el flujo de proyectos.', '2026-10-01', '2026-11-20', 'abierta'
+WHERE NOT EXISTS (SELECT 1 FROM pro_convocatorias WHERE titulo='Convocatoria de muestra 2026');
+
+INSERT INTO pro_proyectos (convocatoria_id,carrera_id,categoria_id,titulo,resumen,descripcion,tipo,anio,estado,destacado)
+SELECT cv.id, ca.id, ct.id, 'Cocina regional sostenible (muestra)',
+       'Ejemplo de ficha para revisar la galería y sus filtros.',
+       'Este es un proyecto demostrativo. Sustitúyanlo por contenido autorizado del equipo antes de la presentación final.',
+       'Proyecto integrador', 2026, 'publicado', 1
+FROM carreras ca
+JOIN pro_convocatorias cv ON cv.titulo='Convocatoria de muestra 2026'
+LEFT JOIN pro_categorias ct ON ct.nombre='Proyecto integrador'
+WHERE ca.nombre LIKE '%Gastronomía%'
+  AND NOT EXISTS (SELECT 1 FROM pro_proyectos WHERE titulo='Cocina regional sostenible (muestra)');
