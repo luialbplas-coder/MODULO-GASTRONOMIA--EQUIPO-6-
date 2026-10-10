@@ -88,7 +88,7 @@ function encabezado(string $titulo): void {
     echo '<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'.h($titulo).' | Explorador UTBB</title><link rel="stylesheet" href="'.h(pro_base()).'/css/estilos.css"><script src="'.h(pro_base()).'/js/app.js" defer></script></head><body>';
     echo '<header class="top"><a class="marca" href="'.h(pro_base()).'/">Explorador <b>UTBB</b></a><nav><a href="'.h(pro_base()).'/">Proyectos</a>';
     if ($u && es_curador()) echo '<a href="'.h(pro_base()).'/admin/">Curaduria</a>';
-    if ($u) echo '<a href="/modulos/portafolio/admin/logout.php">Salir</a>'; else echo '<a href="/modulos/portafolio/admin/login.php">Acceso</a>';
+    if ($u) echo '<a href="'.h(pro_base()).'/admin/logout.php">Salir</a>'; else echo '<a href="'.h(pro_base()).'/admin/login.php">Acceso</a>';
     echo '</nav></header><main class="contenedor">';
     mostrar_aviso();
 }
