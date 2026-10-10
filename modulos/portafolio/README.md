@@ -74,3 +74,10 @@ El repositorio actual no contiene el núcleo del Explorador. Antes de considerar
 La entrega de la asignatura incluye además datos suficientes de prueba, credenciales de prueba por rol y reporte de defectos ejecutados. No se crean cuentas ficticias aquí porque la tabla de usuarios la administra el núcleo.
 
 Fechas señaladas en la especificación: entrega del módulo 20 de noviembre de 2026; presentación final 1 de diciembre de 2026.
+
+
+## Pruebas y contribuciones
+
+Usa [PLAN-DE-PRUEBAS.md](PLAN-DE-PRUEBAS.md) para registrar resultados reales y defectos. La matriz está pendiente de ejecución en el entorno con el núcleo. La asignatura revisa el historial de aportaciones individual: los cuatro integrantes deben trabajar y subir sus propios cambios, revisarlos entre sí y conservar commits que describan su contribución.
+
+Se usó asistencia de IA para preparar esta versión inicial del código y la documentación. El equipo debe declarar qué partes se generaron con esa asistencia, revisarlas, probarlas y ser capaz de explicar y modificar cada línea que entregue.
