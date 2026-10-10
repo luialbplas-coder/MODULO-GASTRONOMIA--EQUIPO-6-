@@ -9,5 +9,5 @@ if($m['estado']!=='publicado'&&!es_curador()&&!$owner){http_response_code(403);e
 $path=ruta_uploads().'/'.$m['nombre_archivo'];
 if(!is_file($path)){http_response_code(404);exit('Archivo no encontrado.');}
 header('X-Content-Type-Options: nosniff');header('Content-Type: '.$m['mime']);header('Content-Length: '.filesize($path));
-$inline=($m['tipo']==='imagen');header('Content-Disposition: '.($inline?'inline':'attachment').'; filename="proyecto-'.$id.'.'.pathinfo($m['nombre_archivo'],PATHINFO_EXTENSION).'"');
+$inline=in_array($m['tipo'],['imagen','video'],true);header('Content-Disposition: '.($inline?'inline':'attachment').'; filename="proyecto-'.$id.'.'.pathinfo($m['nombre_archivo'],PATHINFO_EXTENSION).'"');
 readfile($path);
