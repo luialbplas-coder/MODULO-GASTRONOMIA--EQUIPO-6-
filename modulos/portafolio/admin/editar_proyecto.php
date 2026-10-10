@@ -9,7 +9,7 @@ $carreras=$pdo->query('SELECT id,nombre FROM carreras WHERE activa=1 ORDER BY no
 $cats=$pdo->query('SELECT id,nombre FROM pro_categorias WHERE activa=1 ORDER BY nombre')->fetchAll();
 if($_SERVER['REQUEST_METHOD']==='POST'){
  check_csrf();$titulo=trim((string)($_POST['titulo']??''));$resumen=trim((string)($_POST['resumen']??''));$descripcion=trim((string)($_POST['descripcion']??''));$tipo=trim((string)($_POST['tipo']??''));$carrera=(int)($_POST['carrera_id']??0);$categoria=(int)($_POST['categoria_id']??0);
- if(mb_strlen($titulo)>=4&&mb_strlen($titulo)<=160&&mb_strlen($resumen)>=10&&mb_strlen($resumen)<=280&&mb_strlen($descripcion)>=20&&in_array($carrera,array_column($carreras,'id'))){
+ if(mb_strlen($titulo)>=4&&mb_strlen($titulo)<=160&&mb_strlen($resumen)>=10&&mb_strlen($resumen)<=280&&mb_strlen($descripcion)>=20&&in_array($carrera,array_column($carreras,'id'))&&(!$categoria||in_array($categoria,array_column($cats,'id')))&&mb_strlen($tipo)<=80){
   $q=$pdo->prepare('UPDATE pro_proyectos SET titulo=?,resumen=?,descripcion=?,tipo=?,carrera_id=?,categoria_id=?,actualizado_en=CURRENT_TIMESTAMP WHERE id=?');
   $q->execute([$titulo,$resumen,$descripcion,$tipo?:'Proyecto',$carrera,$categoria?:null,$id]);aviso('ok','Proyecto actualizado.');header('Location: proyectos.php');exit;
  }$error='Revisa el título, el resumen, la descripción y la carrera.';
