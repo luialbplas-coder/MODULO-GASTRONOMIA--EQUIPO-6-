@@ -98,3 +98,9 @@ JOIN pro_convocatorias cv ON cv.titulo='Convocatoria de muestra 2026'
 LEFT JOIN pro_categorias ct ON ct.nombre='Proyecto integrador'
 WHERE ca.nombre LIKE '%Gastronomía%'
   AND NOT EXISTS (SELECT 1 FROM pro_proyectos WHERE titulo='Cocina regional sostenible (muestra)');
+
+INSERT INTO pro_autores (proyecto_id, usuario_id, nombre, contribucion)
+SELECT p.id, NULL, 'Equipo demostrativo A-6', 'Ejemplo de autoría'
+FROM pro_proyectos p
+WHERE p.titulo='Cocina regional sostenible (muestra)'
+  AND NOT EXISTS (SELECT 1 FROM pro_autores a WHERE a.proyecto_id=p.id);
